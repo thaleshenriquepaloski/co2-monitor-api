@@ -31,14 +31,24 @@ class Controller {
         }
     }
 
-    async deletarRegistro(req, res) {
+    async deletarRegistroPorId(req, res) {
         try {
             const { id } = req.params;
-            const delecao = await this.entidadeService.deletarRegistro(id);
+            const delecao = await this.entidadeService.deletarRegistroPorId(id);
             if(!delecao) return res.status(400).json({ message: "Falha na deleção de registro!" });
             return res.status(200).json({ message: "Registro deletado com sucesso!" });
         } catch (error) {
             res.status(500).json({ message: error.message });
+        }
+    }
+
+    async deletarTodosOsRegistros(req, res) {
+        try {
+            const delecao = await this.entidadeService.deletarTodosRegistros();
+            if(!delecao) return res.status(400).json({ message: "Falha na exclusão dos registros!" });
+            return res.status(200).json({ message: "Registro deletado com sucesso!" });
+        } catch (error) {
+            return res.status(500).json({ message: error.message });
         }
     }
 }

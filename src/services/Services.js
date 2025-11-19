@@ -28,6 +28,10 @@ class Service {
         const dadosDeletados = await dataBase[this.model].destroy({ where: { id } });
         return dadosDeletados > 0
     }
+
+    async deletarTodosRegistros() {
+        return dataBase[this.model].destroy({ where: {}, truncate: true })
+    }
 }
 
 module.exports = Service;
