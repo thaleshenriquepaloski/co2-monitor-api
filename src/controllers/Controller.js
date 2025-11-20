@@ -3,15 +3,6 @@ class Controller {
         this.entidadeService = entidadeService;
     }
 
-    // async getTeste(req, res) {
-    //     try {
-    //         const mensagem = await this.entidadeService.getTeste();
-    //         res.status(200).json(mensagem);
-    //     } catch (error) {
-    //         res.status(500).json({ message: error.message });
-    //     }
-    // }
-
     async criarRegistro(req, res) {
         try {
             const dadosRecebidos = req.body;
