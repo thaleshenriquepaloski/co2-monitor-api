@@ -1,0 +1,87 @@
+/* RESET BÁSICO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* CORPO */
+body {
+    background-color: #1b1b1b; /* fundo escuro */
+    color: #f0f0f0;           /* texto claro */
+    line-height: 1.6;
+}
+
+/* HEADER */
+header {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #121212;
+    border-bottom: 2px solid #333;
+}
+
+header h1 {
+    color: #00bfff; /* azul forte */
+    font-size: 2rem;
+}
+
+/* MAIN */
+main {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+/* SEÇÕES */
+section {
+    background-color: #222;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+section h2 {
+    color: #00bfff;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+/* DISPLAY CO2 */
+#co2-display p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+#status.ok {
+    color: #00ff7f; /* verde limpo */
+    font-weight: bold;
+}
+
+#status.alert {
+    color: #ff4500; /* laranja/avermelhado */
+    font-weight: bold;
+}
+
+/* ALERTAS */
+#alertas ul {
+    list-style: none;
+}
+
+#alertas li {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #333;
+    border-left: 5px solid #00bfff;
+    border-radius: 5px;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 15px 0;
+    border-top: 2px solid #333;
+    color: #999;
+    font-size: 0.9rem;
+}

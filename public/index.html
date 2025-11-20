@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASHBOARD CO2</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <h1>MONITORAMENTO DE CO2</h1>
+    </header>
+    <main>
+        
+        <section id="co2-display">
+            <h2>ÚLTIMA LEITURA</h2>
+            <p>CO2: <span id="co2Value">--</span> ppm</p>
+            <p>Status: <span id="status">--</span></p>
+        </section>
+
+        <section id="alertas">
+            <h2>ALERTAS RECENTES</h2>
+            <ul id="alertList">
+                <!-- Lista de alerta que será preenchida via JS -->
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>API CO2 Monitor &copy; 2025</p>
+    </footer>
+    <script src="./app.js"></script>
+</body>
+</html>
