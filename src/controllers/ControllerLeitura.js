@@ -6,16 +6,25 @@ const leituraService = new ServiceLeitura();
 class ControllerLeitura extends Controller {
     constructor() {
         super(leituraService)
+    };
+
+    async pegarUltimo(req, res) {
+        try {
+            const dados = await leituraService.pegarUltimoRegistro();
+            return res.status(200).json(dados)
+        } catch (error) {
+            return res.status(500).json({ message: error.message });
+        }
     }
 
     async criarRegistroEVerificar(req, res) {
         try {
             const dados = req.body;
-            const resultado = await leituraService.criarRegistroEVerificar(dados);
+            const resultado = await leituraService.nova(dados);
             console.log(resultado)
-            res.status(200).json(resultado);
+            return res.status(200).json(resultado);
         } catch (error) {
-            res.status(500).json({ message: error.message });
+            return res.status(500).json({ message: error.message });
         }
     }
 }
