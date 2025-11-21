@@ -13,11 +13,11 @@ function gerarLeituraSimulada() {
 }
 //---------
 
-//usando cron para rodar o post a cada minuto simulando o Sensor enviando dados
-cron.schedule("* * * * *", async () => {
+//usando cron para rodar o post a cada 5 segundos simulando o Sensor enviando dados
+cron.schedule("*/5 * * * * *", async () => {
     const leituraFeita = gerarLeituraSimulada();
     try {
-        await axios.post("http://localhost:8000/monitoramento", leituraFeita);
+        await axios.post("http://localhost:8000/leitura/monitoramento", leituraFeita);
         console.log("Leitura enviada: ", leituraFeita)
     } catch (error) {
         console.error("Erro ao enviar leitura feita CRON: ", error.message);
