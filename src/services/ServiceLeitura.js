@@ -11,6 +11,7 @@ class ServiceLeitura extends Service {
         this.leitura = dataBase.Leitura;
     };
 
+    //producao
     async pegarUltimoRegistro() {
         const ultimaLeitura = await this.leitura.findOne({
             order: [["medidoEm", "DESC"]]
@@ -22,46 +23,54 @@ class ServiceLeitura extends Service {
         };
     }
 
-    async nova(dados) {
+    //producao
+    async limpaRegistroAntigo(maxLeitura) {
+        const maxDeRegistrosPermitido = maxLeitura;
+        const registrosAtuais = await this.leitura.findAll({
+            order: [["medidoEm", "ASC"]],
+            attributes: ["id"]
+        });
+
+        if(registrosAtuais.length > maxDeRegistrosPermitido) {
+            const qtdParaDeletar = registrosAtuais.length - maxDeRegistrosPermitido;
+            const ids = registrosAtuais
+                .slice(0, qtdParaDeletar)
+                .map(r => r.id);
+            await this.leitura.destroy({
+                where: { id: { [Op.in]: ids } }
+            });
+            return console.log(`Apagadas ${ids.length} leituras antigas.`);
+        }
+    }
+
+    //producao
+    async criarNovaLeitura(dados) {
         try {
             const configSetada = await this.configuracao.findOne();
             if(!configSetada) throw new Error("Nenhuma configuração encontrada!");
 
             const novaLeitura = await super.criarRegistro(dados);
 
-            const maxDeRegistrosPermitido = 10;
-
-            //pegando todos os registros atyais da tabela, ordenando do mais antigo pro mais recente
-            const registrosAtuais = await this.leitura.findAll({
-                order: [["medidoEm", "ASC"]], //asc = mais antigo primeiro
-                attributes: ["id"] //só pegamos o id pra economizar a memória
-            });
-
-            //vamos verficar se a tabela passou do limite
-            if(registrosAtuais.length > maxDeRegistrosPermitido) {
-                //quantos registros precisamos apagar para ficar no limite? 
-                const qtdParaDeletar = registrosAtuais.length - maxDeRegistrosPermitido;
-                //pega apenas os IDs dos registros que vamos apagar
-                const ids = registrosAtuais
-                    .slice(0, qtdParaDeletar) //primeiros registros
-                    .map(r => r.id);
-                //deleta os registros antigos do banco
-                await this.leitura.destroy({
-                    where: { id: { [Op.in]: ids } }
-                });
-                console.log(`Apagadas ${ids.length} leituras antigas.`);
-            }
+            await this.limpaRegistroAntigo(10)
 
             if(novaLeitura.co2 > configSetada.maxCo2) {
                 const alertaNovo = {
                     leitura_id: novaLeitura.id,
                     message: `ATENÇÃO - CO2 ACIMA DO LIMITE: ${novaLeitura.co2}`
                 };
-                return await this.alerta.criaEEnviarAlertaPorEmail(alertaNovo);
+                const alertaCriado = await this.alerta.criaEEnviarAlertaPorEmail(alertaNovo);
+                return {
+                    alerta: true,
+                    mensagem: alertaCriado.message,
+                    leitura: novaLeitura
+                }
+            } else {
+                return {
+                    alerta: false,
+                    leitura: novaLeitura
+                }
             }
 
-            return false
-        
         } catch (error) {
             console.error("Erro no service leitura: ");
             console.error(error);

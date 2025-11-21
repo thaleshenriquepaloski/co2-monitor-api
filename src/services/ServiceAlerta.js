@@ -6,6 +6,7 @@ class ServiceAlerta extends Service {
         super("Alerta");
     };
 
+    //producao
     async criaEEnviarAlertaPorEmail(dados) {
         const alertaCriado = await super.criarRegistro(dados);
         await enviarEmail({
