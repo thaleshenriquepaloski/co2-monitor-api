@@ -3,11 +3,9 @@ const configuracaoRoutes = require("./configuracaoRoutes.js");
 const alertaRoutes = require("./alertaRoutes.js")
 
 const routes = (app) => {
-    app.use(
-        leituraRoutes,
-        configuracaoRoutes,
-        alertaRoutes
-    );
+    app.use("/leitura", leituraRoutes);
+    app.use("/configuracao", configuracaoRoutes);
+    app.use("/alerta", alertaRoutes);
 };
 
 module.exports = routes;

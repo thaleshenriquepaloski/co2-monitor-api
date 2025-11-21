@@ -6,14 +6,11 @@ const leituraController = new ControllerLeitura();
 const leituraRoutes = Router();
 
 leituraRoutes
-    //teste:
-    // .post("/teste", (req, res) => leituraController.criarRegistroEVerificar(req, res))
-    //---
+    //producao
     .post("/monitoramento", (req, res) => leituraController.criarRegistroEVerificar(req, res))
-    .get("/registros-leitura", (req, res) => leituraController.pegarRegistros(req, res))
-    .get("/ultima-leitura", (req, res) => leituraController.pegarUltimo(req, res))
-    .post("/criar-leitura", (req, res) => leituraController.criarRegistro(req, res))
-    .delete("/deletar-leitura/:id", (req, res) => leituraController.deletarRegistroPorId(req, res))
-    .delete("/deletar-leitura-todos",(req, res) => leituraController.deletarTodosOsRegistros(req, res))
+    .get("/ultima", (req, res) => leituraController.pegarUltimaLeitura(req, res))
+    //teste
+    .get("/registros", (req, res) => leituraController.pegarRegistrosTodos(req, res))
+    .delete("/deletar-todos",(req, res) => leituraController.deletaTodos(req, res))
 
 module.exports = leituraRoutes;

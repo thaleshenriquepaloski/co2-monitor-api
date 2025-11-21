@@ -6,8 +6,6 @@ const alertaController = new ControllerAlerta();
 const alertaRoutes = Router();
 
 alertaRoutes
-    .get("/registros-alerta", (req, res) => alertaController.pegarRegistros(req, res))
-    .post("/criar-alerta", (req, res) => alertaController.criarRegistro(req, res))
-    .delete("/deletar-alerta/:id", (req, res) => alertaController.deletarRegistroPorId(req, res))
+    .get("/registros", (req, res) => alertaController.pegarRegistrosTodos(req, res))
 
 module.exports = alertaRoutes;
