@@ -2,7 +2,7 @@ const leituraRoutes = require("./leituraRoutes.js");
 const configuracaoRoutes = require("./configuracaoRoutes.js");
 const alertaRoutes = require("./alertaRoutes.js")
 
-routes = (app) => {
+const routes = (app) => {
     app.use(
         leituraRoutes,
         configuracaoRoutes,
