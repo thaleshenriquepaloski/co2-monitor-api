@@ -5,30 +5,17 @@ class Service {
         this.model = nomeModel;
     }
 
-    // async getTeste() {
-    //     const objeto = { message: "Endpoint de TESTE!!" };
-    //     return objeto;
-    // }
-
+    //produção
     async criarRegistro(dados) {
         return dataBase[this.model].create(dados);
     };
 
-    async pegarRegistros() {
+    //producao
+    async pegarTodosRegistros() {
         return dataBase[this.model].findAll();
     };
 
-    async pegarRegistroPorId(where) {
-        return dataBase[this.model].findOne({
-            where: { ...where }
-        });
-    };
-
-    async deletarRegistro(id) {
-        const dadosDeletados = await dataBase[this.model].destroy({ where: { id } });
-        return dadosDeletados > 0
-    }
-
+    //producao
     async deletarTodosRegistros() {
         return dataBase[this.model].destroy({ where: {}, truncate: true })
     }
