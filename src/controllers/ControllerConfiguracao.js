@@ -8,10 +8,11 @@ class ControllerConfiguracao extends Controller {
         super(configuracaoService);
     };
 
+    //produção
     async criarNovaConfig(req, res) {
         try {
             const dados = req.body;
-            const configCriada = await configuracaoService.criarNovaConfig(dados);
+            const configCriada = await configuracaoService.criarConfig(dados);
             return res.status(200).json(configCriada);
         } catch (error) {
             return res.status(500).json({ message: error.message });

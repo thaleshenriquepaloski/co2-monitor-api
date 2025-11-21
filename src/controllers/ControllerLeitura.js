@@ -8,7 +8,8 @@ class ControllerLeitura extends Controller {
         super(leituraService)
     };
 
-    async pegarUltimo(req, res) {
+    //produção
+    async pegarUltimaLeitura(req, res) {
         try {
             const dados = await leituraService.pegarUltimoRegistro();
             return res.status(200).json(dados)
@@ -17,11 +18,11 @@ class ControllerLeitura extends Controller {
         }
     }
 
+    //produção
     async criarRegistroEVerificar(req, res) {
         try {
             const dados = req.body;
-            const resultado = await leituraService.nova(dados);
-            console.log(resultado)
+            const resultado = await leituraService.criarNovaLeitura(dados);
             return res.status(200).json(resultado);
         } catch (error) {
             return res.status(500).json({ message: error.message });
