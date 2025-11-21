@@ -16,11 +16,11 @@ document.addEventListener("DOMContentLoaded", () => {
         co2Display.style.backgroundColor = "yellow";
         setTimeout(() => {
             co2Display.style.backgroundColor = "";
-        }, 3000);
+        }, 300);
 
         try {
             // Buscando o último registro de leitura
-            const responseLeitura = await fetch("/ultima-leitura");
+            const responseLeitura = await fetch("/leitura/ultima");
             if(!responseLeitura.ok) throw new Error("Erro ao buscar leitura");
             
             const dadosLeitura = await responseLeitura.json();
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     //atualiza a cada minuto
     atualizarLeitura(); //chama imediatamente
-    setInterval(atualizarLeitura, 10000);
+    setInterval(atualizarLeitura, 5000);
 });
 
 
