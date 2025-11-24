@@ -49,9 +49,35 @@ section h2 {
 }
 
 /* DISPLAY CO2 */
-#co2-display p {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+#co2-display {
+    background-color: #222;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-width: 350px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/*titulo do card */
+#co2-display h2 {
+    margin-bottom: 15px;
+}
+
+/*Texto "CO2:" e "Status:" */
+.label {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.valor {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.status {
+    font-size: 1.5rem;
+    margin-top: 10px;
 }
 
 #status.ok {
