@@ -31,9 +31,9 @@ cd <pasta-do-projeto>
 npm install
 
 CRIE UM ARQUIVO .env:
-
 EMAIL_USER:seu-email
 EMAIL_PASS:sua-senha-app (A SENHA DE APP DO SEU GMAIL)
+PORT:defina-porta-do-servidor
 
 NPM INSTALL (instalar dependências)
 RODAR AS MIGRATES: npx sequelize-cli db:migrate
