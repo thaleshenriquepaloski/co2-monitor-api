@@ -10,7 +10,7 @@ class ServiceAlerta extends Service {
     async criaEEnviarAlertaPorEmail(dados) {
         const alertaCriado = await super.criarRegistro(dados);
         await enviarEmail({
-            para: process.env.EMAIL_USER,
+            para: process.env.EMAIL_USER, //para este MPV, o e-email destino vem do arquivo '.env'
             assunto: "⚠️ ALERTA DE CO2",
             texto: alertaCriado.message
         })
