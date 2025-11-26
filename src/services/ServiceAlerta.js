@@ -14,6 +14,7 @@ class ServiceAlerta extends Service {
             assunto: "⚠️ ALERTA DE CO2",
             texto: alertaCriado.message
         })
+        return alertaCriado;
     }
 };
 
