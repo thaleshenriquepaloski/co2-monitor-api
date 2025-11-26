@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     class Leitura extends Model {
         static associate(models) {
             this.hasOne(models.Alerta, {
-                foreignKey: "leitura_id"
+                foreignKey: "leitura_id",
+                onDelete: "CASCADE"
             })
         }
     }
