@@ -19,10 +19,6 @@ module.exports = (sequelize, DataTypes) => {
         },
         leitura_id: {
             type: DataTypes.INTEGER,
-            references: {
-                model: "leituras",
-                key: "id"
-            },
             allowNull: false
         },
         message: {
