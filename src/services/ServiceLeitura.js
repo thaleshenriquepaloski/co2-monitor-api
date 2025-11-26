@@ -17,6 +17,10 @@ class ServiceLeitura extends Service {
             order: [["medidoEm", "DESC"]]
         });
         const config = await this.configuracao.findOne();
+
+        if(!ultimaLeitura) {
+            return { leitura: null, maxCo2: config?.maxCo2 }
+        }
         return {
             ...ultimaLeitura.toJSON(),
             maxCo2: config.maxCo2
