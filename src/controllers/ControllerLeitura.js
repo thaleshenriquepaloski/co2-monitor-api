@@ -9,7 +9,7 @@ class ControllerLeitura extends Controller {
     };
 
     //produção
-    async pegarUltimaLeitura(req, res) {
+    pegarUltimaLeitura = async (req, res) => {
         try {
             const dados = await this.entidadeService.pegarUltimoRegistro();
             return res.status(200).json(dados)
@@ -19,7 +19,7 @@ class ControllerLeitura extends Controller {
     }
 
     //produção
-    async criarRegistroEVerificar(req, res) {
+    criarRegistroEVerificar = async (req, res) => {
         try {
             const dados = req.body;
             if(!dados || Object.keys(dados).length === 0) {

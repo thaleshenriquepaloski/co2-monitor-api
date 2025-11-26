@@ -9,7 +9,7 @@ class ControllerConfiguracao extends Controller {
     };
 
     //produção
-    async criarNovaConfig(req, res) {
+    criarNovaConfig = async (req, res) => {
         try {
             const dados = req.body;
             const configCriada = await this.entidadeService.criarConfig(dados);
