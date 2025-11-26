@@ -22,8 +22,11 @@ class ControllerLeitura extends Controller {
     async criarRegistroEVerificar(req, res) {
         try {
             const dados = req.body;
+            if(!dados || Object.keys(dados).length === 0) {
+                return res.status(400).json({ message: "Dados invalidos" })
+            }
             const resultado = await this.entidadeService.criarNovaLeitura(dados);
-            return res.status(200).json(resultado);
+            return res.status(201).json(resultado);
         } catch (error) {
             return res.status(500).json({ message: error.message });
         }
