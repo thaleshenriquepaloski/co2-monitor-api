@@ -8,7 +8,7 @@ class ServiceConfiguracao extends Service {
 
     //producao
     async criarConfig(dados) {
-        await dataBase[this.model].destroy({ where: {}, truncate: true });
+        await dataBase[this.model].destroy({ where: {} });
         return dataBase[this.model].create(dados);
     }
 }
