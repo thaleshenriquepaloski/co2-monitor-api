@@ -6,8 +6,8 @@ const configuracaoController = new ControllerConfiguracao();
 const configuracaoRoutes = Router();
 
 configuracaoRoutes
-    .get("/registros", (req, res) => configuracaoController.pegarRegistrosTodos(req, res))
-    .post("/criar", (req, res) => configuracaoController.criarNovaConfig(req, res))
-    .delete("/deletar", (req, res) => configuracaoController.deletaTodos(req, res))
+    .get("", configuracaoController.pegarRegistrosTodos)
+    .post("", configuracaoController.criarNovaConfig)
+    .delete("", configuracaoController.deletaTodos)
 
-module.exports = configuracaoRoutes;    
+module.exports = configuracaoRoutes;

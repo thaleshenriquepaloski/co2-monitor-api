@@ -6,6 +6,6 @@ const alertaController = new ControllerAlerta();
 const alertaRoutes = Router();
 
 alertaRoutes
-    .get("/registros", (req, res) => alertaController.pegarRegistrosTodos(req, res))
+    .get("", alertaController.pegarRegistrosTodos)
 
 module.exports = alertaRoutes;
