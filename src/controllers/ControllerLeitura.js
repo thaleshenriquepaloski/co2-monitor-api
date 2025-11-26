@@ -11,7 +11,7 @@ class ControllerLeitura extends Controller {
     //produção
     async pegarUltimaLeitura(req, res) {
         try {
-            const dados = await leituraService.pegarUltimoRegistro();
+            const dados = await this.entidadeService.pegarUltimoRegistro();
             return res.status(200).json(dados)
         } catch (error) {
             return res.status(500).json({ message: error.message });
