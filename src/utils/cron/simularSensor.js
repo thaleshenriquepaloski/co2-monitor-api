@@ -104,7 +104,7 @@ function gerarLeituraSimulator() {
     cron.schedule("*/5 * * * * *", async () => {
         const leituraFeita = gerarLeituraSimulator();
         try {
-            await axios.post("http://localhost:8000/leitura/monitoramento", leituraFeita);
+            await axios.post("http://localhost:8000/leitura", leituraFeita);
             console.log("Leitura enviada: ", leituraFeita);
         } catch (error) {
             console.error("Erro ao enviar leitura feita com CRON: ", error.message);
