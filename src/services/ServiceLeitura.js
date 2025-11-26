@@ -55,7 +55,8 @@ class ServiceLeitura extends Service {
 
             const novaLeitura = await super.criarRegistro(dados);
 
-            await this.limpaRegistroAntigo(10)
+            const maxLeituras = 50
+            await this.limpaRegistroAntigo(maxLeituras)
 
             if(novaLeitura.co2 > configSetada.maxCo2) {
                 const alertaNovo = {
