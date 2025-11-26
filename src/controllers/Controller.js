@@ -17,7 +17,7 @@ class Controller {
     async deletaTodos(req, res) {
         try {
             const delecao = await this.entidadeService.deletarTodosRegistros();
-            if(!delecao) return res.status(400).json({ message: "Falha na exclusão dos registros!" });
+            if(delecao === 0) return res.status(400).json({ message: "Falha na exclusão dos registros!" });
             return res.status(200).json({ message: "Registro deletado com sucesso!" });
         } catch (error) {
             return res.status(500).json({ message: error.message });
