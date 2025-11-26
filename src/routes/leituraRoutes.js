@@ -7,10 +7,9 @@ const leituraRoutes = Router();
 
 leituraRoutes
     //producao
-    .post("/monitoramento", (req, res) => leituraController.criarRegistroEVerificar(req, res))
     .get("/ultima", (req, res) => leituraController.pegarUltimaLeitura(req, res))
-    //teste
-    .get("/registros", (req, res) => leituraController.pegarRegistrosTodos(req, res))
+    .get("", (req, res) => leituraController.pegarRegistrosTodos(req, res))
+    .post("/monitoramento", (req, res) => leituraController.criarRegistroEVerificar(req, res))
     .delete("/deletar-todos",(req, res) => leituraController.deletaTodos(req, res))
 
 module.exports = leituraRoutes;
