@@ -38,7 +38,7 @@ function gaussiano(mean = 0, stddev = 1) {
 //inicializa valorAtual a partir do último registro no banco (se existir)
 async function inicializarValorAtual() {
     try {
-        const ultimo = await Leitura.findOne({order: [[createdAt, "DESC"]]});
+        const ultimo = await Leitura.findOne({order: [["createdAt", "DESC"]]});
         if(ultimo && ultimo.co2) {
             valorAtual = Number(ultimo.co2)
         } else {
