@@ -51,7 +51,11 @@ class ServiceLeitura extends Service {
     async criarNovaLeitura(dados) {
         try {
             const configSetada = await this.configuracao.findOne();
-            if(!configSetada) throw new Error("Nenhuma configuração encontrada!");
+            if(!configSetada) {
+                configSetada = await this.configuracao.create({
+                    configSetada: { maxCo2: 1200 }
+                });
+            };
 
             const novaLeitura = await super.criarRegistro(dados);
 
